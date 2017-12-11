@@ -1,0 +1,195 @@
+<html ng-app="app">
+    <head>
+            <meta charset="UTF-8">
+            <title>Teste para a DM Consultoria</title>
+    
+            <!-- Google Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    
+            <!-- Jquery -->
+            <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+            <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+            <!-- Abas -->
+            <script  type="text/javascript" src="js/tabs.js"></script>
+    
+            <!-- Bootstrap -->
+            <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+            <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap-typeahead.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+            <!-- Font Awesome -->
+            <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    
+            <!-- CSS Personalizado -->
+            <link href="css/content.css" rel="stylesheet">
+    </head>
+    <body>     
+        <div ng-controller="listaClientes">
+            <div class="row">
+                        
+                <!-- Barra Lateral -->
+                <div class="col-lg-3 col-md-4 col-sm-12 sidebar ">
+    
+                    <!-- Campo de Pesquisa -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="input-group input-group-lg">
+                                <input type="text" id="pesquisarCliente" class="form-control" placeholder="Pesquisar..." autocomplete="off">
+                                <span class="input-group-btn">
+                                    <button id="pesquisa" class="btn" type="button"><i class="fa fa-search"></i></button>
+                                </span>
+                                </div>
+                        </div>
+                    </div>
+                    <!-- Lista de Clientes -->
+                    <div class="row">
+                        <div class="col-md-12">        
+                            <ul class="listaClientes">
+                                <li ng-repeat="pessoa in dados">
+                                    <a href="detalhes-cliente.html">
+                                        <span id="emailCliente"> {{ pessoa.email }} </span>
+                                        <p id="nomeCliente"> {{pessoa.nome }} </p>
+                                        <span id="cpfCliente"> {{ pessoa.cpf }} </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo-->
+            <div class="col-lg-9 col-md-8 offset-lg-3 offset-md-4  col-sm-12 content ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Fidelidade</h1>
+                        </div>
+                    </div>
+    
+                    <!-- Abas -->
+                    <div class="row">
+                         <div class="col-md-12">                        
+                             <div id="tabs">
+                                <ul>
+                                    <li><a href="#transacoes">Transações</a></li>
+                                    <li><a href="#beneficios">Benefícios</a></li>
+                                    <li><a href="#historico">Histórico</a></li>
+                                </ul>
+    
+                                <!-- Aba de Transações -->
+                                <div id="transacoes">
+    
+                                    <!-- Painel de Saldo -->
+                                    <div class="row panel-top">
+                                        <div class="col-md-3 col-sm-6">
+                                            <h3>Saldo</h3>
+                                            <p><b>- - -</b></p>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <h3>Histórico</h3>
+                                            <p>- - -</p>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <h3>Utilizados</h3>
+                                            <p>- - -</p>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <h3>Perdidos</h3>
+                                            <p>- - -</p>
+                                        </div>
+                                    </div>
+    
+                                    <!--Adicionando nota  -->
+                                    <div class="row module">
+                                         <form class="form-row">
+                                            <div class="col-md-12">                                     
+                                                <h2>Adicionar Nota</h2>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="loja">Loja</label>
+                                                <input class="form-control" readonly="readonly" type="text" name="loja" placeholder="Razão Social, nome Fantasia ou CNPJ" />                                     
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <label for="numeroNota">Nº da Nota</label>
+                                                <input class="form-control" readonly="readonly" type="text" name="numeroNota" placeholder="- - -" />
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <label for="dataNota">Data da Nota</label>
+                                                <input class="form-control" readonly="readonly" type="text" name="dataNota" placeholder="- - -" />
+                                            </div>
+                                            <div class="form-group col-md-5">
+                                                <label for="formaPgto">Forma de Pagamento</label>
+                                                <select class="form-control" readonly="readonly" name="formaPgto">
+                                                    <option value="---">Selecione</option>
+                                                    <option value="dinheiro">Dinheiro</option>
+                                                    <option value="cheque">Cheque</option>
+                                                    <option value="cartao">Cartão de Crédito</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label for="vlr">Valor</label>
+                                                <input readonly="readonly" class="form-control" type="text" name="vlr" placeholder="R$ - - -" />
+                                            </div>
+                                            <div class="form-group col btn-clear offset-md-9">
+                                                <input class="btn btn-block" type="reset" value="Cancelar">
+                                            </div>
+                                            <div class="form-group col btn-main ">
+                                                <input class="btn btn-block" type="submit" value="Adicionar" />
+                                            </div>
+                                        </form>
+                                    </div>
+    
+                                    <!-- Cadastrando nota  -->
+                                    <div class="row module listaNotas">
+                                        <div class="col-md-12">                                     
+                                            <h2>Cadastrar Notas</h2>
+                                            <p>Você precisa confirmar o cadastro dessa lista de notas</p>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Loja</th>
+                                                        <th>Nº da Nota</th>
+                                                        <th>Data da Nota</th>
+                                                        <th>Cadastro</th>
+                                                        <th>Valor</th>
+                                                        <th>&nbsp;</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>- - -</td>
+                                                        <td>- - -</td>
+                                                        <td>- - -</td>
+                                                        <td>- - -</td>
+                                                        <td>- - -</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>                                        
+                                    </div>
+                                </div>
+    
+                                <div id="beneficios">
+                                    <h1>Conteúdo de benefícios aqui...</h1>
+                                </div>
+    
+                                <div id="historico">
+                                        <h1>Conteúdo de histórico aqui...</h1>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>               
+        
+        <script src="js/angular/angular.min.js"></script>
+        <script src="js/app.module.js"></script>
+        
+        <!-- controllers -->
+        <script src="js/listaClientesController.js"></script>
+    </body>
+</html>
